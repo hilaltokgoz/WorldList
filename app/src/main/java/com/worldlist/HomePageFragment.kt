@@ -21,5 +21,5 @@ class HomePageFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home_page, container, false)
     }
-    
+
 }
