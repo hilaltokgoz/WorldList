@@ -8,6 +8,7 @@ package com.worldlist
 //│ ──────────────────────── │
 //│ 3.03.2022                │
 //└──────────────────────────┘
+// 1 adet char isteyeceğiz_>Alfabe
+data class WordModel(val wordAlphabet: Char) {
 
-class WorldModel {
 }
