@@ -12,6 +12,8 @@ class DetailFragment : Fragment() {
     private var _binding:FragmentDetailBinding?=null
     private val binding get()=_binding
 
+    var wordModel:WordModel?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,6 +30,12 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        arguments?.let {
+            val myArgs = DetailFragmentArgs.fromBundle(it)
+            wordModel = myArgs.word
+            binding?.tv?.text = wordModel?.wordAlphabet.toString()
+        }
+
     }
 
     override fun onDestroyView() {

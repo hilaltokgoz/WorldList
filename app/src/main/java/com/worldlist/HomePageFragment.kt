@@ -5,15 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.worldlist.databinding.FragmentHomePageBinding
 
 
 class HomePageFragment : Fragment() {
-    private var _binding: FragmentHomePageBinding? = null
-    private val binding: FragmentHomePageBinding get() = _binding!!
 
-    private var viewBinding: FragmentHomePageBinding? = null
+    lateinit var viewBinding: FragmentHomePageBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,11 +38,16 @@ class HomePageFragment : Fragment() {
         //Adapter Bağlama
         charList[1]
         val wordsAdapter= WordAdapter(wordList)
-        binding.wordRecyclerView.layoutManager =LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+        viewBinding.wordRecyclerView.layoutManager =LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
 
-        binding.wordRecyclerView.adapter=wordsAdapter
-        binding.wordRecyclerView.setHasFixedSize(true)
-
+        viewBinding.wordRecyclerView.adapter=wordsAdapter
+        viewBinding.wordRecyclerView.setHasFixedSize(true)
+        wordsAdapter.alphabetTextClick {
+            //findNavController().navigate(R.id.action_homePageFragment_to_detailFragment)
+            findNavController().navigate(HomePageFragmentDirections.actionHomePageFragmentToDetailFragment(it))
+        }
+        //HomaPage den Detail e geçiş
+     //findNavController().navigate(R.id.action_homePageFragment_to_detailFragment)
 
 
     }

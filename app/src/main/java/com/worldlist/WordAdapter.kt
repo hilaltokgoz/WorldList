@@ -16,8 +16,10 @@ import com.worldlist.databinding.WorldCardDesignBinding
 
 class WordAdapter(private var wordList: ArrayList<WordModel>):RecyclerView.Adapter<WordAdapter.WordCardDesign>() {
 
-    var onItemClick:(WordModel)-> Unit={}
-
+    private var onAlphabetTextClick:(WordModel)-> Unit={}
+    fun alphabetTextClick(onAlphabetTextClick:(WordModel)-> Unit){
+        this.onAlphabetTextClick = onAlphabetTextClick
+    }
     class  WordCardDesign(val wordCardDesignBinding: WorldCardDesignBinding):RecyclerView.ViewHolder(wordCardDesignBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordCardDesign {
@@ -33,10 +35,15 @@ class WordAdapter(private var wordList: ArrayList<WordModel>):RecyclerView.Adapt
 
         //Higher Order Function use
         holder.wordCardDesignBinding.root.setOnClickListener{
-            onItemClick(word)
+
 
         }
+        holder.wordCardDesignBinding.alphabetTextView.setOnClickListener {
+            //item a tıklanınca ne olacak?
+            onAlphabetTextClick(word)
+        }
     }
+
 
     override fun getItemCount(): Int=wordList.size
 
