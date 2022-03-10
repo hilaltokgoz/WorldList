@@ -12,7 +12,9 @@ import kotlinx.parcelize.Parcelize
 //│ 3.03.2022                │
 //└──────────────────────────┘
 // 1 adet char isteyeceğiz_>Alfabe
+//1 adet kelimeleri tutacağımız  liste
+
 @Parcelize
-data class WordModel(val wordAlphabet: Char) :Parcelable{
+data class WordModel(val wordAlphabet: Char, val wordList:ArrayList<String>) :Parcelable{
 
 }

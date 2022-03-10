@@ -1,10 +1,10 @@
 package com.worldlist
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.worldlist.databinding.FragmentHomePageBinding
@@ -17,44 +17,75 @@ class HomePageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewBinding = FragmentHomePageBinding.inflate(layoutInflater)
-        return viewBinding?.root
+        return viewBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       //  val wordList = arrayOf<WordModel>(('A'..'Z')) //Listemiz->Alfabe
-        val charList = ('A'..'Z').toList()
-        val wordList= arrayListOf(
-            WordModel('A'),
-            WordModel('B'),
-            WordModel('C'),
-            WordModel('D'),
-            WordModel('E')
+        val wordList = arrayListOf(
+            "Attach",
+            "Believe",
+            "Attractive",
+            "Bring",
+            "Blow",
+            "Correctly",
+            "Choose",
+            "Complete",
+            "Diagnose",
+            "Damage",
+            "Discuss",
+            "Earn",
+            "Expect",
+            "Establish"
+        )
+        val wordListA = wordList.filter {
+            it.length > 1 && it.substring(0,1)=="A"
+        }
+        val wordListB = wordList.filter {
+            it.length > 1  && it.substring(0,1)=="B"
+        }
+        val wordListC = wordList.filter {
+            it.length > 1  && it.substring(0,1)=="C"
+        }
+        val wordListD = wordList.filter {
+            it.length > 1  && it.substring(0,1)=="D"
+        }
+        val wordListE = wordList.filter {
+            it.length > 1  && it.substring(0,1)=="E"
+        }
+        val characterList = arrayListOf(
+            WordModel('A', wordListA as ArrayList<String>),
+            WordModel('B', wordListB as ArrayList<String>),
+            WordModel('C', wordListC as ArrayList<String>),
+            WordModel('D', wordListD as ArrayList<String>),
+            WordModel('E', wordListE as ArrayList<String>),
         )
 
         //Adapter Bağlama
-        charList[1]
-        val wordsAdapter= WordAdapter(wordList)
-        viewBinding.wordRecyclerView.layoutManager =LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+        val wordsAdapter = WordAdapter(characterList)
+        //RecyclerView ögelerinin yerleşiminin yapabilmek için Layout Manager oluşturulur.
+        viewBinding.wordRecyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        viewBinding.wordRecyclerView.adapter=wordsAdapter
+        viewBinding.wordRecyclerView.adapter = wordsAdapter
         viewBinding.wordRecyclerView.setHasFixedSize(true)
         wordsAdapter.alphabetTextClick {
-            //findNavController().navigate(R.id.action_homePageFragment_to_detailFragment)
-            findNavController().navigate(HomePageFragmentDirections.actionHomePageFragmentToDetailFragment(it))
+            //HomaPage den Detail e geçiş
+            findNavController().navigate(
+                HomePageFragmentDirections.actionHomePageFragmentToDetailFragment(
+                    it
+                )
+            )
         }
-        //HomaPage den Detail e geçiş
-     //findNavController().navigate(R.id.action_homePageFragment_to_detailFragment)
 
-
+        fun onDestroyView() {
+            super.onDestroyView()
+        }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
 }
 
 

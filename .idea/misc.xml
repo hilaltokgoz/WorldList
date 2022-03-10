@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hilal/WorldList/app/src/main/res/drawable/back.xml" value="0.1" />
+        <entry key="..\:/Users/hilal/WorldList/app/src/main/res/drawable/round_button.xml" value="0.1" />
         <entry key="..\:/Users/hilal/WorldList/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/hilal/WorldList/app/src/main/res/layout/detail_card_design.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/hilal/WorldList/app/src/main/res/layout/fragment_detail.xml" value="0.10925925925925926" />
         <entry key="..\:/Users/hilal/WorldList/app/src/main/res/layout/fragment_home_page.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/hilal/WorldList/app/src/main/res/layout/round_button.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/hilal/WorldList/app/src/main/res/layout/world_card_design.xml" value="0.25416666666666665" />
       </map>
     </option>
